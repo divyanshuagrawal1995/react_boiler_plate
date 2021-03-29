@@ -3,12 +3,14 @@ import InputField from '../forms/components/InputField';
 import Button from '../forms/components/Button';
 
 import { Validators } from '../forms/utilities/Validator'
+import { useAuth } from '../context/AuthProvider';
 const Login = () => {
     const passwordRef = useRef()
     const emailRef = useRef()
+    const {addLogindata} = useAuth()
     const handleClick = (event) => {
         event.preventDefault();
-        alert('Button Clicked');
+        addLogindata({email:emailRef.current.value,password:passwordRef.current.value})
     };
     return (
         <div className="container">
